@@ -8,7 +8,7 @@ pipeline {
                 #!/bin/bash
                 pwd
                 sleep 10
-                ls -lrt
+                ls -lrt '''
             }
         }
 
