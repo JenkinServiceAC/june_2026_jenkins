@@ -1,10 +1,9 @@
 pipeline {
     agent any
-
     stages {
         stage('Stage1') {
             steps {
-               bat '''
+               sh '''
                 #!/bin/bash
                 pwd
                 sleep 10
@@ -12,15 +11,15 @@ pipeline {
             }
         }
 
-        stage('Stage 2') {
+        stage('Stage2') {
             steps {
-                bat 'echo this is Test'
+                sh 'echo this is Stage2'
             }
         }
 
-        stage('Stage 3') {
+        stage('Stage3') {
             steps {
-               
+             sh 'echo this is Stage3'  
             }
         }
     }
