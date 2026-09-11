@@ -2,7 +2,7 @@ pipeline {
    agent none
     stages {
         stage('Stage1') {
-             agent any
+             
             steps {
                sh '''
                 #!/bin/bash
