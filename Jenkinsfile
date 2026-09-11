@@ -4,6 +4,9 @@ pipeline {
     string (defaultValue: 'main',description: 'provide the branch to build and deploy',name: 'BRANCH',trim: true)
     choice choices: ['dev', 'qa', 'pre-prod', 'prod'], description: 'choose the env to deploy', name: 'ENVIRONMENT'
       booleanParam defaultValue: true, description: 'DRY_RUN', name: 'DRY_RUN'
+
+  run filter: 'COMPLETED', name: 'run ', projectName: 'run1'
+
         }
     environment {
         BRANCH = 'main'
@@ -37,6 +40,7 @@ pipeline {
                 echo "BRANCH : ${params.BRANCH}"
                 echo "DRY_RUN: ${params.DRY_RUN}"
                 echo "ENVIRONMNET : ${params.ENVIRONMENT}"
+                echo "run : ${params.run}"
 
                 
             }
