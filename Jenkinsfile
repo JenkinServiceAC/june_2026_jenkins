@@ -2,13 +2,8 @@ pipeline {
    agent any
 
    parameters {
-    string defaultValue: 'main',
-    description: 'provide the branch to build and deploy',
-    name: 'BRANCH',
-    trim: true
-    description: 'provide the branch to build and deploy',
-    name: 'BRANCH1',
-    trim: true
+    string (defaultValue: 'main',description: 'provide the branch to build and deploy',name: 'BRANCH',trim: true)
+    string (description: 'provide the branch to build and deploy',name: 'BRANCH1',trim: true)
         }
 
     stages {
