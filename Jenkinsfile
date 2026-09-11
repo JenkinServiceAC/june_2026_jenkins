@@ -1,6 +1,10 @@
 pipeline {
     agent any
-
+ parameters {
+    string (defaultValue: 'main',description: 'provide the branch to build and deploy',name: 'BRANCH',trim: true)
+    choice choices: ['dev', 'qa', 'pre-prod', 'prod'], description: 'choose the env to deploy', name: 'ENVIRONMENT'
+      booleanParam defaultValue: true, description: 'DRY_RUN', name: 'DRY_RUN'
+        }
     environment {
         BRANCH = 'main'
     }
@@ -34,8 +38,14 @@ pipeline {
 
         stage('STAGE3') {
             steps {
+                sh '''
                 echo "This is Stage3"
                 sh 'sleep 5'
+                echo "BRANCH : ${BRANCH}"
+                echo "DRY_RUN: ${DRY_RUN}"
+                echo "ENVIRONMNET : $ENVIRONMENT "
+
+                '''
             }
         }
 
