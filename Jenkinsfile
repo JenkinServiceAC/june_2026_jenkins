@@ -12,14 +12,12 @@ pipeline {
                 ls -lrt  '''
             }
         }
-
         stage('Stage2') {
              
             steps {
                 sh 'echo this is Stage2'
             }
         }
-
         stage('Stage3') {
       
             steps {
