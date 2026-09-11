@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sh '''
                 echo "This is Stage3"
-                sh 'sleep 5'
+                
                 echo "BRANCH : ${BRANCH}"
                 echo "DRY_RUN: ${DRY_RUN}"
                 echo "ENVIRONMNET : $ENVIRONMENT "
