@@ -7,6 +7,8 @@ pipeline {
     choice choices: ['dev', 'qa', 'pre-prod', 'prod'], description: 'choose the env to deploy', name: 'Environment'
     booleanParam defaultValue: true, description: 'UNCHECK THIS TO ACTUAL DEPLOY ', name: 'DRY-RUN'
 
+  credentials credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: 'Class-Github', description: 'github credential', name: 'gitguh', required: true
+
 }
 
     stages {
