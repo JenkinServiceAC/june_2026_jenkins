@@ -31,14 +31,14 @@ pipeline {
 
         stage('STAGE3') {
             steps {
-                sh '''
+                
                 echo "This is Stage3"
                 
                 echo "BRANCH : ${params.BRANCH}"
                 echo "DRY_RUN: ${params.DRY_RUN}"
                 echo "ENVIRONMNET : ${params.ENVIRONMENT}"
 
-                '''
+                
             }
         }
 
