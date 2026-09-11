@@ -11,8 +11,7 @@ pipeline {
     password defaultValue: '', description: 'githupassword', name: 'githupassword'
      run description: 'dev server', filter: 'ALL', name: 'Run', projectName: 'dev'
     
-    file description: 'newfile.txt', name: 'C:\\Users\\Nirmala\\Desktop\\newfile.txt'
-
+    
 }
 
     stages {
