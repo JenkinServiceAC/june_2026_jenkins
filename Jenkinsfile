@@ -1,8 +1,16 @@
 pipeline {
-   agent none
+   agent any
+
+   parameters {
+    string defaultValue: 'main',
+    description: 'provide the branch to build and deploy',
+    name: 'BRANCH',
+    trim: true
+        }
+
     stages {
         stage('Stage1') {
-             agent any
+            
             steps {
                sh '''
                 #!/bin/bash
@@ -13,18 +21,14 @@ pipeline {
         }
 
         stage('Stage2') {
-             agent {
-        label 'slave1'
-    }
+             
             steps {
                 sh 'echo this is Stage2'
             }
         }
 
         stage('Stage3') {
-             agent {
-        label 'slave2'
-    }
+      
             steps {
              sh 'echo this is Stage3'  
             }
