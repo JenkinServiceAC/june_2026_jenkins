@@ -34,9 +34,9 @@ pipeline {
                 sh '''
                 echo "This is Stage3"
                 
-                echo "BRANCH : $params.BRANCH"
-                echo "DRY_RUN: $params.DRY_RUN"
-                echo "ENVIRONMNET : $params.ENVIRONMENT"
+                echo "BRANCH : ${params.BRANCH}"
+                echo "DRY_RUN: ${params.DRY_RUN}"
+                echo "ENVIRONMNET : ${params.ENVIRONMENT}"
 
                 '''
             }
