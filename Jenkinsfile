@@ -5,6 +5,8 @@ pipeline {
     string (defaultValue: 'main',description: 'provide the branch to build and deploy',name: 'BRANCH',trim: true)
     string (description: 'provide the branch to build and deploy',name: 'BRANCH1',trim: true)
     choice choices: ['dev', 'qa', 'pre-prod', 'prod'], description: 'choose the env to deploy', name: 'Environment'
+    booleanParam defaultValue: true, description: 'UNCHECK THIS TO ACTUAL DEPLOY ', name: 'DRY-RUN'
+
 }
 
     stages {
