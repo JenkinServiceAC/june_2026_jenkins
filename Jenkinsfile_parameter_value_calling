@@ -25,6 +25,13 @@ pipeline {
         stage('STAGE2') {
           
             steps {
+                sh '''
+                    echo APP - $APP 
+                    echo BRANCH - $BRANCH
+                    sleep 10
+                    ls -lrt
+                '''
+
                 echo "${env.BRANCH}"
             }
         }
@@ -34,9 +41,9 @@ pipeline {
                 sh '''
                 echo "This is Stage3"
                 
-                echo "BRANCH : $params.BRANCH"
-                echo "DRY_RUN: $params.DRY_RUN"
-                echo "ENVIRONMNET : $params.ENVIRONMENT"
+                echo "BRANCH : ${BRANCH}"
+                echo "DRY_RUN: ${DRY_RUN}"
+                echo "ENVIRONMNET : $ENVIRONMENT "
 
                 '''
             }
