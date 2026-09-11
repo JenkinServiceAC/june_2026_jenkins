@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'slave1'
+    }
     stages {
         stage('Stage1') {
             steps {
@@ -7,7 +9,7 @@ pipeline {
                 #!/bin/bash
                 pwd
                 sleep 10
-                ls -lrt '''
+                ls -lrt  '''
             }
         }
 
