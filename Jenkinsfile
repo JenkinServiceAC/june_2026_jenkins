@@ -10,6 +10,9 @@ pipeline {
     credentials credentialType: 'com.cloudbees.plugins.credentials.impl.UsernamePasswordCredentialsImpl', defaultValue: 'Class-Github', description: 'github credential', name: 'gitguh', required: true
     password defaultValue: '', description: 'githupassword', name: 'githupassword'
      run description: 'dev server', filter: 'ALL', name: 'Run', projectName: 'dev'
+    
+    file description: 'newfile.txt', name: 'C:\\Users\\Nirmala\\Desktop\\newfile.txt'
+
 }
 
     stages {
