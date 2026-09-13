@@ -1,0 +1,1 @@
+git pull && git status && git commit -m "$(date)" && git push
