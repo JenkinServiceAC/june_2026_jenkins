@@ -4,18 +4,18 @@ pipeline{
     }
     stages{
         stage('build'){
-            step{
+            steps{
                 echo "Slave1 build"
             }
         }
 
         stage('Test'){
-            step{
+            steps{
              echo "This is test buil"
             }
         }
         stage('Deploy'){
-            step{
+            steps{
                 echo "This is Deploy"
             }
         }
