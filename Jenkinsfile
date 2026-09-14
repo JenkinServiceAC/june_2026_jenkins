@@ -7,8 +7,8 @@ pipeline{
     stages{
         stage('build'){
             steps{
-                echo "Slave2 build"
-                sh '''echo BRANCH - $BRANCH'
+                echo " build"
+                sh '''echo BRANCH - $BRANCH
                 sleep 5'''
             }
         }
@@ -16,7 +16,7 @@ pipeline{
         stage('Test'){
             steps{
              echo "This is test buil"
-             echo $(env.BRANCH)
+             echo ${env.BRANCH}
              sleep 5
             }
         }
