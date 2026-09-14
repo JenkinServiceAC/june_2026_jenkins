@@ -16,7 +16,7 @@ pipeline{
         stage('Test'){
             steps{
              echo "This is test buil"
-             echo ${env.BRANCH}
+             echo "${env.BRANCH}"
              sleep 5
             }
         }
