@@ -1,9 +1,9 @@
 pipeline{
     agent any
-    environment {
+parameters {
+  (string defaultValue: 'main', description: 'Provide the branch to build and deploy', name: 'BRANCH', trim: true)
+}
 
-        BRANCH = 'main'
-    }
     stages{
         stage('build'){
             steps{
@@ -16,7 +16,7 @@ pipeline{
         stage('Test'){
             steps{
              echo "This is test buil"
-             echo "${env.BRANCH}"
+             echo "${params.BRANCH}"
              sleep 5
             }
         }
