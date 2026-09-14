@@ -1,11 +1,11 @@
 pipeline{
     agent {
-        label 'slave2'
+        label 'slave5'
     }
     stages{
         stage('build'){
             steps{
-                echo "Slave1 build"
+                echo "Slave2 build"
             }
         }
 
