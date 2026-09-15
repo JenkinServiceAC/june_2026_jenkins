@@ -4,7 +4,9 @@ pipeline{
 
         stage('STAGE1'){
             when {
-                branch 'origin/main'
+                expression{
+                env.GIT_BRANCH=='origin/main'
+                }
             }
             steps{
                 echo "${env.BUILD_NUMBER}"  
