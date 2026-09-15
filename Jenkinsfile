@@ -4,13 +4,14 @@ pipeline{
 
         stage('STAGE1'){
             when {
-                branch 'main'
+                branch 'origin/main'
             }
             steps{
-                sh''' 
-                git branch
-                '''
-                echo "This when example"              
+                echo "${env.BUILD_NUMBER}"  
+                echo "${env.GIT_BRANCH}"
+                echo "${env.JOB_NAME}"
+                echo "${env.GIT_URL}"
+                echo "${env.BRANCH_NAME}"           
            }
         }
     }
