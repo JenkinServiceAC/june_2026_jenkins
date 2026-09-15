@@ -12,7 +12,7 @@ pipeline{
                         sh '''
                         echo 'stage1 success'
                         sleep 5
-                        exit 1
+                        
                         '''
                         currentBuild.result='SUCCESS'
                     }catch(Exception e){
