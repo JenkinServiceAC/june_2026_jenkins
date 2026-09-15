@@ -1,36 +1,34 @@
-pipeline {
-   agent any
+pipeline{
+    agent any
+parameters {
+  string (defaultValue: 'main', description: 'Provide the branch to build and deploy', name: 'BRANCH', trim: true)
+  choice(choices: ['dev', 'test', 'pre-pod', 'PROD'], 
+  description: 'List all the environments',
+   name: 'ENVIRONMENT')
+}
 
-   parameters {
-    string (defaultValue: 'main',description: 'provide the branch to build and deploy',name: 'BRANCH',trim: true)
-    string (description: 'provide the branch to build and deploy',name: 'BRANCH1',trim: true)
-        }
-
-    stages {
-        stage('Stage1') {
-            
-            steps {
-               sh '''
-                #!/bin/bash
-                pwd
-                sleep 10
-                ls -lrt  '''
+    stages{
+        stage('build'){
+            steps{
+                echo " build"
+                sh '''echo BRANCH - $BRANCH
+                sleep 5'''
+                echo "${params.ENVIRONMENT}"
             }
         }
 
-        stage('Stage2') {
-             
-            steps {
-                sh 'echo this is Stage2'
+        stage('Test'){
+            steps{
+             echo "This is test buil"
+             echo "${params.BRANCH}"
+             sleep 5
+            }
+        }
+        stage('Deploy'){
+            steps{
+                echo "This is Deploy"
             }
         }
 
-        stage('Stage3') {
-      
-            steps {
-             sh 'echo this is Stage3'  
-            }
-        }
-        
     }
 }
