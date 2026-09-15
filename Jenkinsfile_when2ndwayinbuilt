@@ -14,10 +14,10 @@ pipeline{
                         sleep 5
                         
                         '''
-                        env.STAGE1_STATUS='SUCCESS'
+                        currentBuild.result='SUCCESS'
                     }catch(Exception e){
                         echo "Coaught exception: ${e.message}"
-                        env.STAGE1_STATUS = 'FAILURE'
+                        currentBuild.result = 'FAILURE'
                     }
                 }    
 
@@ -26,7 +26,7 @@ pipeline{
             stage('STAGE2'){
                 when {
                     expression{
-                        env.STAGE1_STATUS == 'SUCCESS'
+                        currentBuild.result == 'SUCCESS'
 
                     }
                 }
@@ -38,7 +38,7 @@ pipeline{
             stage('STAGE3'){
                 when{
                     expression{
-                        env.STAGE1_STATUS == 'FAILURE'
+                        currentBuild.result == 'FAILURE'
 
                     }
                 }
