@@ -1,32 +1,57 @@
-pipeline {
+def stage1status=''
+
+pipeline{
     agent any
+    stages{
+        stage('STAGE1'){
+          steps  {
 
-    stages {
-        stage('STAGE1') {
-            steps {
-                catchError(buildResult:'SUCCESS',stageResult:'FAILURE'){
-                sh '''
-                echo "Running Tests"
-                exit 1
-                '''
+                script{
+                    try {
 
+                        sh '''
+                        echo 'stage1 success'
+                        sleep 5
+                        '''
+                        stage1status='SUCCESS'
+                    }catch(Exception e){
+                        echo "Coaught exception: ${e.message}"
+                        stage1status = 'FAILURE'
+                    }
+                }    
+
+            }   
+        }
+            stage('STAGE2'){
+                when {
+                    expression{
+                        stage1status == 'SUCCESS'
+
+                    }
                 }
-             
+                steps{
+                    echo 'Stage 1 is success'
+                }
+
             }
+            stage('STAGE3'){
+                when{
+                    expression{
+                        stage1status == 'FAILURE'
+
+                    }
+                }
+                steps{
+
+                    echo 'STAGE1 is FAILED'
+                }
+            }
+
         }
 
-        stage('STAGE2') {
-            steps {
-                sleep 5
-                echo "TEST stage is running"
-            }
-        }
-
-        stage('STAGE3') {
-            steps {
-                sleep 5
-                echo "Deploy stage is running"
-            }
-        }
     }
-}
+
+
+
+
+
