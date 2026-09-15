@@ -1,58 +1,16 @@
-def stage1status=''
-
 pipeline{
-    agent any
     stages{
+
         stage('STAGE1'){
-          steps  {
-
-                script{
-                    try {
-
-                        sh '''
-                        echo 'stage1 success'
-                        sleep 5
-                        
-                        '''
-                        env.STAGE1_STATUS='SUCCESS'
-                    }catch(Exception e){
-                        echo "Coaught exception: ${e.message}"
-                        env.STAGE1_STATUS = 'FAILURE'
-                    }
-                }    
-
-            }   
-        }
-            stage('STAGE2'){
-                when {
-                    expression{
-                        env.STAGE1_STATUS == 'SUCCESS'
-
-                    }
-                }
-                steps{
-                    echo 'Stage 1 is success'
-                }
-
+            when {
+                branch 'main'
             }
-            stage('STAGE3'){
-                when{
-                    expression{
-                        env.STAGE1_STATUS == 'FAILURE'
-
-                    }
-                }
-                steps{
-
-                    echo 'STAGE1 is FAILED'
-                }
-            }
-
+            steps{
+                sh''' 
+                git branch
+                '''
+                echo "This when example"              
+           }
         }
-
     }
-
-
-
-
-
+}
