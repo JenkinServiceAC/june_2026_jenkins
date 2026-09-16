@@ -3,8 +3,8 @@ pipeline{
         stages{
             stage('stage1'){
                 steps{
-                git GIT_BRANCH:'main'
-                GIT_URL: 'https://github.com/Nirmala18/calculator_fork.git'
+                git branch :'main',
+                url :'https://github.com/Nirmala18/calculator_fork.git'
                 }
             }
         stage('Stage2'){
