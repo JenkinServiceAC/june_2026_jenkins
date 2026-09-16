@@ -1,35 +1,50 @@
 pipeline {
-   agent none
+    agent any
+
+    environment {
+        BRANCH = 'main'
+    }
+
     stages {
-        stage('Stage1') {
-             agent any
+        stage('STAGE1') {
+            environment {
+                APP = 'frontend'
+            }
             steps {
-               sh '''
-                #!/bin/bash
-                pwd
-                sleep 10
-                ls -lrt  '''
-                echo "pull request for pipeline1 folder available"
+                sh '''
+                    echo APP - $APP 
+                    echo BRANCH - $BRANCH
+                    sleep 5
+                '''
             }
         }
 
-        stage('Stage2') {
-             agent {
-        label 'slave1'
-    }
+        stage('STAGE2') {
+          
             steps {
-                sh 'echo this is Stage2'
+                sh '''
+                    echo APP - $APP 
+                    echo BRANCH - $BRANCH
+                    sleep 10
+                    ls -lrt
+                '''
+
+                echo "${env.BRANCH}"
             }
         }
 
-        stage('Stage3') {
-             agent {
-        label 'slave2'
-    }
+        stage('STAGE3') {
             steps {
-             sh 'echo this is label Stage3'  
+                echo "This is Stage3"
+                sh 'sleep 5'
             }
         }
-        
+
+        stage('STAGE4') {
+            steps {
+                 sh 'echo THis is STAGE4'
+                 sh 'sleep 5'
+            }
+        }
     }
 }
