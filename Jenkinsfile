@@ -8,7 +8,7 @@ pipeline{
                 steps{
             sh 'pwd'
             sh '''ls -rt
-            sleep '''
+            sleep 5 '''
                 }
             }
         stage('Stage2'){
