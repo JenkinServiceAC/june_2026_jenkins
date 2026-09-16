@@ -12,8 +12,9 @@ pipeline {
                sh '''
                 #!/bin/bash
                 pwd
-                sleep 10
+                sleep 9
                 ls -lrt  '''
+                echo "${params.ENVIRONMENT}"
             }
         }
 
