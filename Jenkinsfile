@@ -3,9 +3,15 @@ pipeline{
         stages{
             stage('stage1'){
                 steps{
-                git branch :'main',
-                url :'https://github.com/Nirmala18/calculator_fork.git',
-                credentialsId:'Class-Github'
+            sh 'pwd'
+            checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                    credentialsId: 'Class-Github',
+                    url: 'https://github.com/Nirmala18/calculator_fork.git'
+    ]]
+])
                 }
             }
         stage('Stage2'){

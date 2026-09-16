@@ -4,7 +4,8 @@ pipeline{
             stage('stage1'){
                 steps{
                 git branch :'main',
-                url :'https://github.com/Nirmala18/calculator_fork.git'
+                url :'https://github.com/Nirmala18/calculator_fork.git',
+                 credentialsId:'Class-Github'
                 }
             }
         stage('Stage2'){
