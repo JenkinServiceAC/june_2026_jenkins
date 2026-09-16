@@ -1,20 +1,10 @@
 pipeline{
     agent any
-    stages{
+        stages{
+            stage('stage1'){
 
-        stage('STAGE1'){
-            when {
-                expression{
-                env.GIT_BRANCH=='origin/main'
-                }
+                echo "hello"
             }
-            steps{
-                echo "${env.BUILD_NUMBER}"  
-                echo "${env.GIT_BRANCH}"
-                echo "${env.JOB_NAME}"
-                echo "${env.GIT_URL}"
-                echo "${env.BRANCH_NAME}"           
-           }
+
         }
-    }
 }
