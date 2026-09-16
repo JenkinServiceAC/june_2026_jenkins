@@ -1,14 +1,17 @@
 pipeline{
     agent any
-    triggers{
-        cron('H/5 * * * *')
-    }
         stages{
             stage('stage1'){
                 steps{
             sh 'pwd'
-            sh '''ls -rt
-            sleep '''
+            checkout([
+                    $class: 'GitSCM',
+                    branches: [[name: '*/main']],
+                    userRemoteConfigs: [[
+                    credentialsId: 'Class-Github',
+                    url: 'https://github.com/Nirmala18/calculator_fork.git'
+    ]]
+])
                 }
             }
         stage('Stage2'){
