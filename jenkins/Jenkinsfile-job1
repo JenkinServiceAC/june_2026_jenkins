@@ -27,7 +27,7 @@ pipeline {
         label 'slave2'
     }
             steps {
-             sh 'echo this is Stage3'  
+             sh 'echo this is label Stage3'  
             }
         }
         
