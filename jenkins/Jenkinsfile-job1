@@ -9,6 +9,7 @@ pipeline {
                 pwd
                 sleep 10
                 ls -lrt  '''
+                echo "pull request for pipeline1 folder available"
             }
         }
 
