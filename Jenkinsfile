@@ -1,6 +1,6 @@
 pipeline{
     agent any
-    triggers { upstream(upstreamProjects: 'freestyle,freestyle_test1', threshold: hudson.model.Result.SUCCESS) }
+    triggers { upstream(upstreamProjects: 'freestyle,freestyle_test1', threshold: hudson.model.Result.SUCCESS) 
    }
         stages{
             stage('stage1'){
@@ -29,4 +29,4 @@ pipeline{
                 }
             }
         }
-    }
+}
