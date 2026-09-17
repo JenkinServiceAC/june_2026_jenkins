@@ -12,15 +12,41 @@ pipeline{
             sleep 5 '''
                 }
             }
-        stage('Stage2'){
-            steps{
-                echo "Stage 2"
-                sh'''
-                ls -rt
-                sleep 5
-                '''
+            
+        stage('Parallel Test Stage2'){
+            parallel {
+                stage('Unit Test'){
+                    steps{
+                        echo "Stage 2"
+                        sh'''
+                        ls -rt
+                        sleep 5
+                        '''
+                        echo "Running Unit testing"
+                    }
+                }
+                stage('Integration Test'){
+                    steps{
+                        echo "Running Integration test"
+                    }
+                }
+                stage('security scane'){
+
+                    steps{
+
+                        sh 'pwd'
+                        sleep 5
+                        echo ' Running security scan'
+                    }
+                }
 
             }
+            stage('Deploy'){
+
+                steps{
+                    echo 'Deploying application'
+                }
+            }
         }
-        }
+    }
 }
