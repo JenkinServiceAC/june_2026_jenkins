@@ -10,7 +10,7 @@ pipeline{
         stages{
             stage('stage1'){
                 steps{
-                    ansiColor('gnome-terminal') {
+                    ansiColor('xterm') {
             sh 'pwd'
             sh '''ls -rt
             sleep 5 '''
