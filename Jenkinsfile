@@ -30,7 +30,7 @@ pipeline{
                         echo "Running Integration test"
                     }
                 }
-                stage('security scane'){
+                stage('security scan'){
 
                     steps{
 
@@ -41,6 +41,7 @@ pipeline{
                 }
 
             }
+        }
             stage('Deploy'){
 
                 steps{
@@ -49,4 +50,3 @@ pipeline{
             }
         }
     }
-}
