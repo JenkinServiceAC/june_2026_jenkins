@@ -5,6 +5,9 @@ pipeline{
   disableConcurrentBuilds()
   timestamps()
   timeout(time: 15, unit: 'SECONDS')
+  ansiColor('gnome-terminal') {
+    // some block
+}
    }
         stages{
             stage('stage1'){
