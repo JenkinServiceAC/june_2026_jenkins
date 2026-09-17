@@ -5,18 +5,19 @@ pipeline{
   disableConcurrentBuilds()
   timestamps()
   timeout(time: 15, unit: 'SECONDS')
-  ansiColor('gnome-terminal') 
+  
    }
         stages{
             stage('stage1'){
                 steps{
+                    ansiColor('gnome-terminal') 
             sh 'pwd'
             sh '''ls -rt
             sleep 5 '''
                 }
             }
             
-        stage('Parallel Test Stage2'){
+        stage('Stage2'){
         steps{
 
             sh '''
