@@ -4,8 +4,8 @@ pipeline{
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
     disableConcurrentBuilds()
     timestamps()
-    timeout(time: 15, unit: 'SECONDS')
-  
+    timeout(time: 4, unit: 'SECONDS')
+    ansiColor('xterm')
    }
         stages{
             stage('stage1'){
