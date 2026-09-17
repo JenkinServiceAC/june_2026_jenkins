@@ -1,6 +1,11 @@
 pipeline{
     agent any
-    triggers { upstream(upstreamProjects: 'freestyle,freestyle_test1', threshold: hudson.model.Result.SUCCESS) }
+    options{
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '20')
+    disableConcurrentBuilds()
+    timestamps()
+    timeout(time: 20, unit: 'SECONDS')//this will the build/job exceed the limits
+    ansiColor('xterm')
    }
         stages{
             stage('stage1'){
