@@ -1,19 +1,20 @@
 pipeline{
     agent any
-   options{
-      buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
-  disableConcurrentBuilds()
-  timestamps()
-  timeout(time: 15, unit: 'SECONDS')
+    options{
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
+    disableConcurrentBuilds()
+    timestamps()
+    timeout(time: 15, unit: 'SECONDS')
   
    }
         stages{
             stage('stage1'){
                 steps{
-                    ansiColor('gnome-terminal') 
+                    ansiColor('gnome-terminal') {
             sh 'pwd'
             sh '''ls -rt
             sleep 5 '''
+                }
                 }
             }
             
