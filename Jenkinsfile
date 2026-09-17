@@ -1,7 +1,7 @@
 pipeline{
     agent any
     options{
-    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
+    buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '20')
     disableConcurrentBuilds()
     timestamps()
     timeout(time: 20, unit: 'SECONDS')//this will the build/job exceed the limits
