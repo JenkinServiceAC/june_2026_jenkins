@@ -4,7 +4,7 @@ pipeline{
     buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '3')
     disableConcurrentBuilds()
     timestamps()
-    timeout(time: 4, unit: 'SECONDS')
+    timeout(time: 20, unit: 'SECONDS')//this will the build/job exceed the limits
     ansiColor('xterm')
    }
         stages{
