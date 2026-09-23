@@ -1,5 +1,3 @@
-// assignment
-
 def devstage=''
 pipeline{
     agent any
