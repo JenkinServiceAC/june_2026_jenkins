@@ -1,56 +1,50 @@
-def devstage=''
-pipeline{
+pipeline {
     agent any
 
-stages{
+    environment {
+        BRANCH = 'main'
+    }
 
-      stage('DEV'){
-            steps{
-            script{
-            try{
-
-                  sh'''
-                  pwd
-                  exit 1
-                  '''
-                  devstage='SUCCESS'
-                  
-            }catch(Exception e){
-                  echo "ciaught an exception in dev stage"
-                  echo "${e.message}"
-                  devstage='FAILURE'
-                  }
+    stages {
+        stage('STAGE1') {
+            environment {
+                APP = 'frontend'
             }
+            steps {
+                sh '''
+                    echo APP - $APP 
+                    echo BRANCH - $BRANCH
+                    sleep 5
+                '''
             }
-      }
-            stage('TEST'){
-                  when{
-                        expression{
+        }
 
-                              devstage=='SUCCESS'
-                        }
-                  }
-                  steps{
+        stage('STAGE2') {
+          
+            steps {
+                sh '''
+                    echo APP - $APP 
+                    echo BRANCH - $BRANCH
+                    sleep 10
+                    ls -lrt
+                '''
 
-                        sh 'ls -lrt'
-                        sleep 10
-                  }
+                echo "${env.BRANCH}"
             }
-             stage('DEploy'){
-                  when{
-                        expression{
+        }
 
-                              devstage=='FAILURE'
-                        }
-                  }
-                  steps{
-
-                        sh 'll'
-                        sh 'pwd'
-                        sleep 10
-                  }
+        stage('STAGE3') {
+            steps {
+                echo "This is Stage3"
+                sh 'sleep 5'
             }
-      }
+        }
 
-
+        stage('STAGE4') {
+            steps {
+                 sh 'echo THis is STAGE4'
+                 sh 'sleep 5'
+            }
+        }
+    }
 }
